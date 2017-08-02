@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - "7"
 before_script:
-  - ls
+  - ls > ./test.sh
   - date
   
- script:
+ script: ./test.sh
