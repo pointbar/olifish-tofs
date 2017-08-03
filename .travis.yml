@@ -6,4 +6,3 @@ before_script:
     - chmod +x ./test.sh
     - date
 script: ./test.sh
-
