@@ -4,5 +4,4 @@ node_js:
 before_script:
   - ls > ./test.sh
   - date
-  
- script: ./test.sh
+script: ./test.sh
