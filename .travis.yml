@@ -1,8 +1,11 @@
 language: node_js
 node_js:
-    - "7"
+- '7'
 before_script:
-    - echo 'ls' > ./test.sh
-    - chmod +x ./test.sh
-    - date
+- echo 'ls' > ./test.sh
+- chmod +x ./test.sh
+- echo $gh-token
 script: ./test.sh
+env:
+  global:
+    secure: UoQ76x5543LxnvyduP91ihbPpPh6yTjLB2PmValFzO/tBNSpW+y/hNIyrCG3Lz5/0b41GtZgnxEzW6jDpJi8WlumZBlQLq7wqE2alS9xchuM1n2T3FI1fpc6wS8Ryhl4AWPPOFXfwaMauFr7wm2fljJXHYtGvX+OIWItMV42S0CmAgdKpi4LOXoCGAzVPjrF82LkL4I35VGSHXfnBTEBQZ0elPItsHU+N5dMnqyJdj7yl6Fd0ArtpL1rBfo/yIQYauaC+4iBI7SA5BzzzE5NZY6noEi9PJxNrJInbp733TtxyVd29BbHnMIUzFXcJi6DSCqvxrmlvPYL0ziUydoYhrYErYW7+Tby0s5/Dr76KLkYZ/PubYgWgJcIgDeWcZsLlUBk46r05RNozGRbdmBEtvSgRpgWX69CQbMdXtx4KR9ToqyBjB7SZlm6JlvyvRfE8eVQ74vlhwvIjxwm4RlMpSlyyFBQSN6iX9C2g9mo4anmEYSLV+zBlXsoVKpIyh1pe0slsVxX6m3D3g3n9LDiluFcKrt36aVgwUKhyT1svDUmh4WDtLk6GKsw4jiDeqpyoAYkRPj5beCFbwCCv1v7T9NbinXoQiGmKIGAR0L7ykVZaWWzCCh7vUU+US+QAOm7JiuXYs26qoFxFZ4EfECT/Q6nw0Df/h3YEUg/6LKi++M=
