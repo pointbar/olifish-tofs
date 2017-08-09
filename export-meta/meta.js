@@ -1,6 +1,6 @@
 const fs = require('fs')
 
-const folder = '../img'
+const folder = 'img'
 
 const readThumbs = (folder, extract) => {
     const metas = []
