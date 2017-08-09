@@ -1,11 +1,7 @@
 language: node_js
 node_js:
 - '7'
-before_script:
-- echo 'ls' > ./test.sh
-- chmod +x ./test.sh
-- echo $token
-script: ./test.sh
+script: ./export-meta/push-data.sh
 env:
   global:
     secure: poEVUZ9xmsNRU6tnLySSvpIdpRNzBbaoROT9yEypMhonNlCr1Tx8fuDdyeX/jZSN9671w6NoFarIj3YolfJXFp42s43yE8N2Sle8WFJKgNdQNSKkiD9PN4axsDWPqwrK999lxdpqxZsCP6Gk3ifY5H1xVsy3Oqopr/Bxr0NlH88Ttw+jxXuM6myvIPf2jHAsncCCj8p/8w5JnHQCTCHSNDp8rjxlOfWmB3oHzhGfvqLVxwXm9DrbwcB81xmfXa2Rvf+4eVJ4lfChvWv+MGUYEPZCIDXtaLRcrA2j+tvOmvvSJCnQSRL4NK45+jbUJy41A38GcAQwn5M+GCoSewmmolxVJ4I+s+0wXZCFHD8mLUpKfHYLxoF0IhCxu4q+lWJry+jxhGC0sIIUdCJDzlzb41C+lkoY9EoakhtLQcZgOllA9knKZJQRuuGfveKK7Cq9Ay6HFfHWsCDwkGaeGyOeOeL8mId/uoXQgyquvAE08fpmNB8xSpvx5P3LmNQ3LVdrEhyEE9WSvkaIaBra52WDTfMJP6gFXZ19h8pb4p57yx/gv8d4L8Jm7Sf2oL+Sbqi6A1TT/IBF/tar/c2sgYCrD3VFT6h0+7Daz21efnipYxEC9/tz0XMipKqzJDgDfZGRm5T+11wKehJ3FEFlJpTf+KOC42Uk8sJ/Ij4zlhO9K40=
