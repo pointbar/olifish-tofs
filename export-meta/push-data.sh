@@ -3,6 +3,7 @@ cd export-meta
 npm install
 node meta.js
 cd ..
+cat data.json
 git checkout master
 git add data.json
 git commit -m "Update data.json"
