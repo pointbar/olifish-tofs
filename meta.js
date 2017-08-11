@@ -21,6 +21,7 @@ ep.open()
     .then((metas, err) => {
         const metasClean = []
         metas.data.forEach(meta => {
+            console.log('meta', meta);
             const fields = {}
             fields.dateCreated = meta.dateCreated || new Date('01/01/2010')
             fields.location = meta['Caption-Abstract'] || ''
