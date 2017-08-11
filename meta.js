@@ -8,12 +8,12 @@ ep.open()
     .then((metas, err) => {
         const metasClean = []
         metas.data.forEach(meta => {
-            metasClean.push({
-                dateCreated: meta.dateCreated || new Date('01/01/2010'),
-                location: meta['Caption-Abstract'] || '',
-                keywords: meta.keywords || [],
-                model: meta.Model || []
-            })
+            const fields = {}
+            fields.dateCreated = meta.dateCreated || new Date('01/01/2010')
+            fields.location = meta['Caption-Abstract'] || ''
+            fields.keywords = meta.keywords || []
+            fields.model = meta.Model || []
+            metasClean.push(fields)
         })
         fs.writeFile('data.json', JSON.stringify(metasClean), 'utf8', err => {
             if (err) throw err
