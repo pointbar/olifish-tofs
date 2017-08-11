@@ -1,0 +1,25 @@
+{
+    "name": "olifish-tofs",
+    "version": "1.0.0",
+    "description": "Olifish",
+    "main": "meta.js",
+    "dependencies": {
+        "node-exiftool": "^2.2.0"
+    },
+    "devDependencies": {
+        "node-exiftool": "^2.2.0"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/olivier-colli/olifish-tofs.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/olivier-colli/olifish-tofs/issues"
+    },
+    "homepage": "https://github.com/olivier-colli/olifish-tofs#readme"
+}
