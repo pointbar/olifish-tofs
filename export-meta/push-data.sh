@@ -1,6 +1,8 @@
 #! /bin/sh
-npm install --save-dev node-exiftool
+cd export-meta
+npm install
 node export-meta/meta.js
+cd ..
 git checkout master
 git add data.js
 git commit -m "Update data.js"
