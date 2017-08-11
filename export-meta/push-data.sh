@@ -1,6 +1,5 @@
 #! /bin/sh
 cd export-meta
-npm install
 node meta.js
 cd ..
 cat data.json
