@@ -1,11 +1,23 @@
-console.log("Start")
+(function() {
+    var childProcess = require("child_process");
+    var oldSpawn = childProcess.spawn;
+
+    function mySpawn() {
+        console.log('spawn called');
+        console.log(arguments);
+        var result = oldSpawn.apply(this, arguments);
+        return result;
+    }
+    childProcess.spawn = mySpawn;
+})();
+
 const fs = require('fs')
 const exiftool = require('node-exiftool')
 
 const ep = new exiftool.ExiftoolProcess()
 ep.open()
     // read directory
-    .then(() => ep.readMetadata('img-en-attente', ['-File:all']))
+    .then(() => ep.readMetadata('./img-en-attente', ['-File:all']))
     .then((metas, err) => {
         const metasClean = []
         metas.data.forEach(meta => {
