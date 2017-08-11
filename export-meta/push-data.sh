@@ -1,7 +1,7 @@
 #! /bin/sh
 cd export-meta
 npm install
-node export-meta/meta.js
+node meta.js
 cd ..
 git checkout master
 git add data.js
