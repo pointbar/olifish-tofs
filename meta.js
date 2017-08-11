@@ -1,3 +1,4 @@
+console.log("Start")
 const fs = require('fs')
 const exiftool = require('node-exiftool')
 
@@ -22,3 +23,4 @@ ep.open()
     })
     .then(() => ep.close())
     .catch(console.error)
+console.log("End")
