@@ -29,13 +29,13 @@ const fieldsToKeywords = keywords => {
 }
 
 ep.open()
-    .then(() => ep.readMetadata('./img', ['-File:all']))
+    .then(() => ep.readMetadata('./img/thumbs', ['-File:all']))
     .then((metas, err) => {
         const metasClean = []
         metas.data.forEach(meta => {
             const fields = extractFieldsFromKeywords(meta.Keywords)
             fields.thumbnail = meta.SourceFile
-            fields.img = meta.SourceFile.replace('thumb', 'img')
+            fields.img = meta.SourceFile.replace('thumbs/thumb', 'img')
             fields.dateCreated = meta.dateCreated || new Date('01/01/2010')
             fields.location = meta['Caption-Abstract'] || ''
             fields.model = meta.Model || []
