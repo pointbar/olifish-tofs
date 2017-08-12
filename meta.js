@@ -17,10 +17,11 @@ const fieldsToKeywords = keywords => {
     const fields = {}
     fields.keywords = []
     keywords.forEach(keyword => {
-        if (!keyword.match(/\w*:/)) {
-            fields.keywords.push(keyword)
+        const k = keyword || ''
+        if (!k.match(/\w*:/)) {
+            fields.keywords.push(k)
         } else {
-            let field = keyword.split(':')
+            let field = k.split(':')
             fields[field[0]] = field[1].trim()
         }
     })
