@@ -43,7 +43,6 @@ ep.open()
         return ep.readMetadata('./img-en-attente', ['-File:all'])
     })
     .then((metas, err) => {
-        console.log('The file has been saved!')
         const metasClean = []
         metas.data.forEach(meta => {
             const fields = extractFieldsFromKeywords(meta.Keywords)

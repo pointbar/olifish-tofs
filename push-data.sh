@@ -1,9 +1,15 @@
 #! /bin/sh
+# wget https://www.sno.phy.queensu.ca/~phil/exiftool/Image-ExifTool-10.60.tar.gz
+# gzip -dc Image-ExifTool-10.60.tar.gz | tar -xf -
+# cd Image-ExifTool-10.60
+# perl Makefile.PL
+# make test
+# sudo make install
+
+sudo apt-get install libimage-exiftool-perl
+
 git checkout master
-npm install
 node meta.js
-ls
-cat data.json
 git add data.json
 git commit -m "Update data.json"
 git push https://$token@github.com/olivier-colli/olifish-tofs.git
