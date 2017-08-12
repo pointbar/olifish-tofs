@@ -34,8 +34,10 @@ ep.open()
         const metasClean = []
         metas.data.forEach(meta => {
             const fields = extractFieldsFromKeywords(meta.Keywords)
-            fields.thumbnail = meta.SourceFile
-            fields.fileName = meta.SourceFile.replace('thumbs/thumb', 'img')
+            fields.fileName = {
+                thumbnail: meta.SourceFile,
+                img: meta.SourceFile.replace('thumbs/thumb', 'img')
+            }
             fields.dateCreated = meta.dateCreated || new Date('01/01/2010')
             fields.location = meta['Caption-Abstract'] || ''
             fields.model = meta.Model || []
