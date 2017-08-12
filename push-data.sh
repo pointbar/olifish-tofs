@@ -7,6 +7,7 @@
 # sudo make install
 
 sudo apt-get install libimage-exiftool-perl
+exiftool -ver
 
 git checkout master
 node meta.js
