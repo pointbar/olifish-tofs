@@ -28,7 +28,7 @@ const fieldsToKeywords = keywords => {
 }
 
 ep.open()
-    .then(() => ep.readMetadata('./img-en-attente', ['-File:all']))
+    .then(() => ep.readMetadata('./img', ['-File:all']))
     .then((metas, err) => {
         const metasClean = []
         metas.data.forEach(meta => {
