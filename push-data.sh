@@ -6,7 +6,7 @@
 # make test
 # sudo make install
 
-apt-get install libimage-exiftool-perl
+sudo apt-get install libimage-exiftool-perl
 exiftool -ver
 
 git checkout master
