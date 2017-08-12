@@ -1,5 +1,6 @@
 #! /bin/sh
 git checkout master
+npm install
 node meta.js
 ls
 cat data.json
