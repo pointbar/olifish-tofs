@@ -38,25 +38,26 @@ const extractFieldsFromKeywords = meta => {
 
 
 ep.open()
-    .then(() => ep.readMetadata('./img-en-attente', ['-File:all']))
+    .then(() => {
+        console.log('yop')
+        return ep.readMetadata('./img-en-attente', ['-File:all'])
+    })
     .then((metas, err) => {
         console.log('The file has been saved!')
         const metasClean = []
         metas.data.forEach(meta => {
-                const fields = extractFieldsFromKeywords(meta.Keywords)
-                fields.thumbnail = meta.SourceFile
-                fields.img = meta.SourceFile.replace('thumb', 'img')
-                fields.dateCreated = meta.dateCreated || new Date('01/01/2010')
-                fields.location = meta['Caption-Abstract'] || ''
-                fields.model = meta.Model || []
-                metasClean.push(fields)
-            })
-            /*
-            fs.writeFile('data.json', JSON.stringify(metasClean), 'utf8', err => {
-                if (err) throw err
-                console.log('The file has been saved!')
-            })
-            */
+            const fields = extractFieldsFromKeywords(meta.Keywords)
+            fields.thumbnail = meta.SourceFile
+            fields.img = meta.SourceFile.replace('thumb', 'img')
+            fields.dateCreated = meta.dateCreated || new Date('01/01/2010')
+            fields.location = meta['Caption-Abstract'] || ''
+            fields.model = meta.Model || []
+            metasClean.push(fields)
+        })
+        fs.writeFile('data.json', JSON.stringify(metasClean), 'utf8', err => {
+            if (err) throw err
+            console.log('The file has been saved!')
+        })
     })
     .then(() => ep.close())
     .catch(console.error)
