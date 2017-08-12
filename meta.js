@@ -4,13 +4,17 @@ const exiftool = require('node-exiftool')
 const ep = new exiftool.ExiftoolProcess()
 
 const extractFieldsFromKeywords = meta => {
-    const fields = {}
     let keywords = []
     if (typeof meta === 'string') {
-        keywords = [meta]
+        keywords.push(meta)
     } else {
-        keywords = meta || []
+        keywords = keywords.concat(meta)
     }
+    return fieldsToKeywords(keywords)
+}
+
+const fieldsToKeywords = keywords => {
+    const fields = {}
     fields.keywords = []
     keywords.forEach(keyword => {
         if (!keyword.match(/\w*:/)) {
@@ -23,25 +27,8 @@ const extractFieldsFromKeywords = meta => {
     return fields
 }
 
-(function() {
-    var childProcess = require("child_process");
-    var oldSpawn = childProcess.spawn;
-
-    function mySpawn() {
-        console.log('spawn called');
-        console.log(arguments);
-        var result = oldSpawn.apply(this, arguments);
-        return result;
-    }
-    childProcess.spawn = mySpawn;
-})();
-
-
 ep.open()
-    .then(() => {
-        console.log('yop')
-        return ep.readMetadata('./img-en-attente', ['-File:all'])
-    })
+    .then(() => ep.readMetadata('./img-en-attente', ['-File:all']))
     .then((metas, err) => {
         const metasClean = []
         metas.data.forEach(meta => {
