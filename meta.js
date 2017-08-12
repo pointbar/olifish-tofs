@@ -1,3 +1,28 @@
+const fs = require('fs')
+const exiftool = require('node-exiftool')
+
+const ep = new exiftool.ExiftoolProcess()
+
+const extractFieldsFromKeywords = meta => {
+    const fields = {}
+    let keywords = []
+    if (typeof meta === 'string') {
+        keywords = [meta]
+    } else {
+        keywords = meta || []
+    }
+    fields.keywords = []
+    keywords.forEach(keyword => {
+        if (!keyword.match(/\w*:/)) {
+            fields.keywords.push(keyword)
+        } else {
+            let field = keyword.split(':')
+            fields[field[0]] = field[1].trim()
+        }
+    })
+    return fields
+}
+
 (function() {
     var childProcess = require("child_process");
     var oldSpawn = childProcess.spawn;
@@ -11,36 +36,17 @@
     childProcess.spawn = mySpawn;
 })();
 
-const fs = require('fs')
-const exiftool = require('node-exiftool')
-
-const ep = new exiftool.ExiftoolProcess()
-
-const extractFieldsFromKeywords = (keywords) => {
-    const fields = {}
-    fields.keyword = []
-    keywords.forEach(keyword => {
-        if (!keyword.match(/\w*:/)) {
-            fields.keyword.push(keyword)
-        } else {
-            let field = keyword.split(':')
-            fields[field[0]] = decodeURIComponent(escape(field[1].trim()))
-        }
-    })
-    return fields
-}
 
 ep.open()
     .then(() => ep.readMetadata('./img-en-attente', ['-File:all']))
     .then((metas, err) => {
-        console.log('metas', metas)
         const metasClean = []
         metas.data.forEach(meta => {
-            console.log(meta)
-            const fields = {}
+            const fields = extractFieldsFromKeywords(meta.Keywords)
+            fields.thumbnail = meta.SourceFile
+            fields.img = meta.SourceFile.replace('thumb', 'img')
             fields.dateCreated = meta.dateCreated || new Date('01/01/2010')
             fields.location = meta['Caption-Abstract'] || ''
-            fields.keywords = meta.keywords || []
             fields.model = meta.Model || []
             metasClean.push(fields)
         })
